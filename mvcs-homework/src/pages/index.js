@@ -1,12 +1,19 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import GoogleLogin from 'react-google-login'
+
+const responseGoogle = (response) => {
+  alert(response);
+}
 
 const IndexPage = () =>
   <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <h1>Login to your account</h1>
+    <GoogleLogin
+      clientId="745733918782-4iapqcau3m2v7qfmg4qfah1j75levbk5.apps.googleusercontent.com"
+      buttonText="Login"
+      onSuccess={responseGoogle}
+      onFailure={responseGoogle}
+    />
   </div>
 
 export default IndexPage
