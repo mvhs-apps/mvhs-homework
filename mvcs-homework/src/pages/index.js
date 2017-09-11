@@ -2,7 +2,16 @@ import React from 'react'
 import GoogleLogin from 'react-google-login'
 
 const responseGoogle = (response) => {
-  alert(response);
+  //console.log(response);
+  //console.log(response.profileObj.familyName);
+  //console.log(response.profileObj.givenName);
+  //console.log(response.profileObj.name);
+  //alert("ATTEMPTING TO MOVE YOU");
+  window.location.href = "./main";
+}
+
+const failureResponse = (response) => {
+  console.log(response);
 }
 
 const IndexPage = () =>
