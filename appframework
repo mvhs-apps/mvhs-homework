@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>MVHS Homework App</title>
+</head>
+
+<body>
+
+<div>
+<h1>Calendar</h1>
+</div>
+
+<div>
+<h1>School Events</h1>
+</div>
+
+<div>
+
+<ul>
+
+<li>Monday</li>
+<li>Tuesday</li>
+<li>Wednesday</li>
+<li>Thursday</li>
+<li>Friday</li>
+<li>Saturday</li>
+<li>Sunday</li>
+
+</ul>
+
+</div>
+
+</body>
+
+</html>
