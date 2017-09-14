@@ -8,12 +8,13 @@ const cookies = new Cookies();
 //console.log(cookies.get('myCat')); Pacman
 
 const responseGoogle = (response) => {
-  //console.log(response);
+  console.log(response);
   //console.log(response.profileObj.familyName);
   //console.log(response.profileObj.givenName);
   //console.log(response.profileObj.name);
   //alert("ATTEMPTING TO MOVE YOU");
   cookies.set('name', response.profileObj.name, { path: '/'});
+  cookies.set('key', response.accessToken, {path: '/'});
   //alert(cookies.get('name'));
   window.location.href = "./main";
 }
