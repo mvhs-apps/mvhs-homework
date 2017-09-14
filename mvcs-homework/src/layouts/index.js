@@ -27,7 +27,7 @@ const Header = () =>
             textDecoration: 'none',
           }}
         >
-          Gatsby
+          MVCS Homework App
         </Link>
       </h1>
     </div>
