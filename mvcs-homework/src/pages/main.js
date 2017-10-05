@@ -21,7 +21,7 @@ fetch('https://classroom.googleapis.com/v1/courses?access_token=' + key, {
 const LoginPage = () =>
   <div>
     <h1>Welcome {name}</h1>
-    <p id = "root">If this shows then we have a problem</p>
+    <p id = "root">If this shows then we have a problem or the courses are in console</p>
   </div>
 
 export default LoginPage
