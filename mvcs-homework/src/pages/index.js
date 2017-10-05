@@ -27,7 +27,9 @@ const IndexPage = () =>
   <div>
     <h1>Login to your account</h1>
     <GoogleLogin
-      clientId="745733918782-4iapqcau3m2v7qfmg4qfah1j75levbk5.apps.googleusercontent.com"
+      clientId="290518323911-f5ph5ghp1qr230r90f79p7sg2n5o0vn9.apps.googleusercontent.com"
+      scope="https://www.googleapis.com/auth/classroom.courses"
+      response_type="token"
       buttonText="Login"
       onSuccess={responseGoogle}
       onFailure={failureResponse}

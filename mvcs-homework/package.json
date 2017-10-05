@@ -4,10 +4,13 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.8.12",
-    "gatsby-link": "^1.6.8",
-    "gatsby-plugin-react-helmet": "^1.0.3",
-    "react-redirect": "^1.0.0"
+    "gatsby": "^1.9.52",
+    "gatsby-link": "^1.6.20",
+    "gatsby-plugin-react-helmet": "^1.0.6",
+    "react": "^0.14.9",
+    "react-google-login": "^2.11.2",
+    "react-redirect": "^1.0.0",
+    "universal-cookie": "^2.1.0"
   },
   "keywords": [
     "gatsby"
