@@ -1,6 +1,6 @@
-import React from 'react'
-import GoogleLogin from 'react-google-login'
-import Cookies from 'universal-cookie'
+import React from 'react';
+import GoogleLogin from 'react-google-login';
+import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
