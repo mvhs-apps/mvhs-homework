@@ -26,10 +26,12 @@ const failureResponse = (response) => {
 const IndexPage = () =>
   <div>
     <h1>Login to your account</h1>
+    <p>Don't worry we won't just take all your passwords</p>
     <GoogleLogin
       clientId="290518323911-f5ph5ghp1qr230r90f79p7sg2n5o0vn9.apps.googleusercontent.com"
-      scope="https://www.googleapis.com/auth/classroom.courses"
+      scope="https://www.googleapis.com/auth/classroom.courses https://www.googleapis.com/auth/classroom.coursework.me"
       response_type="token"
+      prompt="select_account"
       buttonText="Login"
       onSuccess={responseGoogle}
       onFailure={failureResponse}
