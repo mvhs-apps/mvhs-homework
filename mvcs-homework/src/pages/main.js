@@ -49,7 +49,6 @@ const LoginPage = () =>
     <h1>Welcome {name}</h1>
 
     <p id = "root">If this shows then we have a problem or the courses are in console</p>
-    <p id = "root1"></p>
   </div>
 
 export default LoginPage
