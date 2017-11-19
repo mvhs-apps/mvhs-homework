@@ -16,13 +16,14 @@ class Homework {
       const json = await response.json();
       console.log(json);
       var coursemax = 4;
-      var ctext = [coursemax*8];
-      var ctext2 = [coursemax*8];
+      var length = coursemax;
+      var ctext = [length];
+      var ctext2 = [length];
       var counter1 = 0;
-      var counter2 = 0;
       var coursework;
       var coursejson;
       var courses = [];
+      var counter2 = 0;
       for(counter1 in json.courses){
         coursework = await fetch('https://classroom.googleapis.com/v1/courses/' +json.courses[counter1].id+'/courseWork?access_token='+key);
         coursejson = await coursework.json();
@@ -31,17 +32,19 @@ class Homework {
       console.log(courses);
       counter1 = 0;
       for(counter2 in courses){
+        ctext[counter2] = "";
         for(counter1 in courses[counter2].courseWork){
-          if (counter1<=coursemax){
-            ctext[counter1] = "<p>"+courses[counter2].courseWork[counter1].title+"</p>";
+          
+          if (counter1<coursemax){
+            ctext[counter2] += "<p>"+courses[counter2].courseWork[counter1].title+"</p>";
           }
         }
         document.getElementById('rootname'+counter2).innerHTML = json.courses[counter2].name+'</b>'+':'+'<br/>';;
 
       }
+
       for(counter2 in ctext){
         document.getElementById('root'+counter2).innerHTML = ctext[counter2];
-
       }
       } catch(err) {
         console.log(err);
