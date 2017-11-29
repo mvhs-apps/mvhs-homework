@@ -16,9 +16,8 @@ class Homework {
       const json = await response.json();
       console.log(json);
       var coursemax = 4;
-      var length = coursemax;
-      var ctext = [length];
-      var ctext2 = [length];
+      var ctext = [coursemax*8];
+      var ctext2 = [8];
       var counter1 = 0;
       var coursework;
       var coursejson;
@@ -39,7 +38,7 @@ class Homework {
             ctext[counter2] += "<p>"+courses[counter2].courseWork[counter1].title+"</p>";
           }
         }
-        document.getElementById('rootname'+counter2).innerHTML = json.courses[counter2].name+'</b>'+':'+'<br/>';;
+        document.getElementById('rootname'+counter2).innerHTML = json.courses[counter2].name+'</b>'+':'+'<br/>';
 
       }
 
