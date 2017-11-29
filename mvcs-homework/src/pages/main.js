@@ -55,7 +55,7 @@ app.loadTest();
 const LoginPage = () =>
   <div>
     <h1>Welcome {name}</h1>
-    <p id = "rootname0"></p>
+    <p id = "rootname0">"Loading"</p>
     <p id = "root0"></p>
     <p id = "rootname1"></p>
     <p id = "root1"></p>
