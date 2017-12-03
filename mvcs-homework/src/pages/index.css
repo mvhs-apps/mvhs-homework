@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+
+body {
+
+    font-family: Roboto;
+
+}
+
+
+
+#title {
+
+    padding: 1em;
+
+}
+
+
+
+#login {
+
+    text-align: right;
+
+}
+
+
+
+#info {
+
+    font-family: Roboto;
+
+    font-size: 36px;
+
+    padding: 1em;
+
+    text-align: center;
+
+}
+
+
+
+#img {
+
+    text-align: center;
+
+}
+
+
+
+#info2 {
+
+    font-family: Roboto;
+
+    text-align: right;
+
+}
