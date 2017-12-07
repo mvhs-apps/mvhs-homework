@@ -104,8 +104,10 @@ class App extends Component {
       } catch(err) {
         console.log(err);
     }
+    }
+    loadTest();
   }
-}
+
   render() {
     const { div } = this.props;
     const { value } = this.state;
