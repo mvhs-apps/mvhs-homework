@@ -58,9 +58,7 @@ class Homework {
 
       }
       for (counter2 in ctext) {
-        if (document.readyState === 'complete') {
-          document.getElementById('root' + counter2).innerHTML = ctext[counter2];
-        }
+        document.getElementById('root' + counter2).innerHTML = ctext[counter2];
       }
     } catch (err) {
       console.log(err);
