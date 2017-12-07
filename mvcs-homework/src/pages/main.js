@@ -27,45 +27,6 @@ var name = (cookies.get('name'));
 var key = (cookies.get('key'));
 console.log(key);
 
-class Homework {
-  async loadTest() {
-    try {
-      const response = await fetch('https://classroom.googleapis.com/v1/courses?access_token=' + key);
-      const json = await response.json();
-      console.log(json);
-      var coursemax = 4;
-      var ctext = [coursemax * 8];
-      var ctext2 = [coursemax * 8];
-      var counter1 = 0;
-      var counter2 = 0;
-      var coursework;
-      var coursejson;
-      var courses = [];
-      for (counter1 in json.courses) {
-        coursework = await fetch('https://classroom.googleapis.com/v1/courses/' + json.courses[counter1].id + '/courseWork?access_token=' + key);
-        coursejson = await coursework.json();
-        courses[counter1] = coursejson;
-      }
-      console.log(courses);
-      counter1 = 0;
-      for (counter2 in courses) {
-        for (counter1 in courses[counter2].courseWork) {
-          if (counter1 <= coursemax) {
-            ctext[counter1] = "<p>" + courses[counter2].courseWork[counter1].title + "</p>";
-          }
-        }
-        document.getElementById('rootname' + counter2).innerHTML = json.courses[counter2].name + '</b>' + ':' + '<br/>';;
-
-      }
-      for (counter2 in ctext) {
-        document.getElementById('root' + counter2).innerHTML = ctext[counter2];
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-}
-
 //MUI and rendering code
 
 function TabContainer(props) {
@@ -94,7 +55,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      value: 0
+      value: 0,
+      root: "loading..."
     };
   };
 
@@ -102,12 +64,63 @@ class App extends Component {
     this.setState({ value: value });
   };
 
+  componentDidMount() {
+    async function loadTest() {
+      try {
+        console.log("I WENT IN !!");
+        const response = await fetch('https://classroom.googleapis.com/v1/courses?access_token=' + key);
+        console.log("CAN U SEE?");
+        console.log(response);
+        const json = await response.json();
+        console.log(json);
+        var coursemax = 4;
+        var ctext2 = [];
+        var counter1 = 0;
+        var counter2 = 0;
+        //console.log(counter2);
+        var coursework, coursejson;
+        var courses = [];
+        for (counter1 in json.courses){
+          coursework = await fetch('https://classroom.googleapis.com/v1/courses/' +json.courses[counter1].id+'/courseWork?access_token='+key);
+          coursejson = await coursework.json();
+          courses[counter1]=coursejson;
+        }
+        //console.log(courses);
+        counter1 = 0;
+        //console.log("BEFORE 4" + counter2.toString());
+        var ctext = [];
+        for (counter2 in courses) {
+          for (counter1 in courses[counter2].courseWork) {
+            if (counter1 <= coursemax) {
+              console.log(courses[counter2].courseWork[counter1].title);
+              console.log("Counter: " + counter1);
+              console.log(ctext);
+              ctext[counter1] = courses[counter2].courseWork[counter1].title;
+              console.log("ERRNO?")
+            }
+          }
+          //counter2=1;
+          //console.log(counter2);
+          console.log('rootname' + counter2.toString());
+          document.getElementById('rootname' + counter2.toString()).innerHTML = json.courses[counter2].name + '</b>' + ':' + '<br/>';
+  
+        }
+        for (counter2 in ctext) {
+          document.getElementById('root' + counter2.toString()).innerHTML = ctext[counter2];
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    loadTest();
+  }
+
   render() {
     const { div } = this.props;
     const { value } = this.state;
 
     return (
-      <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme} >
         <div className={div}>
           <AppBar position="static" id='title'>
             <Toolbar>
@@ -125,6 +138,10 @@ class App extends Component {
             <Paper id='calendar'>
               <Table>
                 <TableHead>
+                  <TableRow>
+                    <TableCell><p id="rootname0">Loading... </p></TableCell>
+                    <TableCell><p id="root0"></p></TableCell>
+                  </TableRow>
                   <TableRow>
                     <TableCell><p id="rootname1"></p></TableCell>
                     <TableCell><p id="root1"></p></TableCell>
@@ -148,10 +165,6 @@ class App extends Component {
                   <TableRow>
                     <TableCell><p id="rootname6"></p></TableCell>
                     <TableCell><p id="root6"></p></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell><p id="rootname7"></p></TableCell>
-                    <TableCell><p id="root7"></p></TableCell>
                   </TableRow>
                 </TableHead>
               </Table>
