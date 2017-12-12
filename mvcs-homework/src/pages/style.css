@@ -7,11 +7,14 @@ body {
 #calendar {
   padding: 8px;
   margin: 0 auto;
-  min-width: 300px;
-  width: fit-content;
-  max-width: 600px;
+  width: 500px;
 }
 
 #avatar {
 margin-left: auto;
+padding: .5em;
+}
+
+#title {
+  position: static;
 }
