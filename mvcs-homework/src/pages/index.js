@@ -86,15 +86,10 @@ const IndexPage = () =>
 
 <div>
 
-  <div>
+  <div id='info'>
 
-  <MuiThemeProvider theme={theme}>
-
-    <AppBar id='title' color='primary'>
-
-      <Typography type='title'>MVHS Homework App</Typography>
-
-        <div id='login'>
+    <img id='img' src="https://lh3.googleusercontent.com/mIrjY5VWssd3-L8mVC0ALxDeUEhO0wzy88cgB0PQb3f9LI4DAPgObnAQ72rl9rvFcwgI=w300" alt="DUCKLINGS"/>
+    <div id='login'>
 
           <GoogleLogin
 
@@ -115,24 +110,6 @@ const IndexPage = () =>
         />
 
         </div>
-
-    </AppBar>
-
-  </MuiThemeProvider>
-
-  </div>
-
-  <div id='info'>
-
-    <p>All your homework available in a convenient format!</p>
-
-    <img id='img' src="https://lh3.googleusercontent.com/mIrjY5VWssd3-L8mVC0ALxDeUEhO0wzy88cgB0PQb3f9LI4DAPgObnAQ72rl9rvFcwgI=w300" alt="DUCKLINGS"/>
-
-  </div>
-
-  <div id='info2'>
-
-    Developed by the MVHS CS Club
 
   </div>
 

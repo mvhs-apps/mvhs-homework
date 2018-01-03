@@ -15,7 +15,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
-import Avatar from 'material-ui/Avatar';
 import DateRangeIcon from 'material-ui-icons/DateRange';
 import AssignmentIcon from 'material-ui-icons/Assignment';
 import NoteIcon from 'material-ui-icons/Note';
@@ -194,7 +193,6 @@ class App extends Component {
         <div className={div}>
           <div id='title'>
             <AppBar position="static">
-              <div id='avatar'><Avatar>{name.charAt(0)}</Avatar></div>
               <Tabs value={value} onChange={this.handleChange} centered>
                 <Tab label={<AssignmentIcon />} id='icon' />
                 <Tab label={<NoteIcon />} id='icon' />
@@ -240,7 +238,7 @@ class App extends Component {
           </div>
           </TabContainer>}
           {value === 1 && <TabContainer>
-            There is no API for Google Keep... Sadness...
+            New notes feature, coming soon!
           </TabContainer>}
         </div>
       </MuiThemeProvider>

@@ -7,12 +7,7 @@ body {
 #calendar {
   padding: 8px;
   margin: 0 auto;
-  width: 500px;
-}
-
-#avatar {
-margin-left: auto;
-padding: .5em;
+  width: auto;
 }
 
 #title {

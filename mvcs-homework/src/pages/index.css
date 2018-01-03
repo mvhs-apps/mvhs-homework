@@ -9,18 +9,9 @@ body {
 }
 
 
-
-#title {
-
-    padding: 1em;
-
-}
-
-
-
 #login {
 
-    text-align: right;
+    text-align: center;
 
 }
 
@@ -43,15 +34,5 @@ body {
 #img {
 
     text-align: center;
-
-}
-
-
-
-#info2 {
-
-    font-family: Roboto;
-
-    text-align: right;
 
 }
