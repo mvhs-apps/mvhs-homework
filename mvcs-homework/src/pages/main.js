@@ -26,10 +26,12 @@ class Homework {
       }
       console.log(courses);
       counter1 = 0;
+
       for(counter2 in courses){
+        ctext[counter2] ="";
         for(counter1 in courses[counter2].courseWork){
           if (counter1<=coursemax){
-            ctext[counter1] = "<p>"+courses[counter2].courseWork[counter1].title+"</p>";
+            ctext[counter2] += "<p>"+courses[counter2].courseWork[counter1].title+"</p>";
           }
         }
         document.getElementById('rootname'+counter2).innerHTML = json.courses[counter2].name+'</b>'+':'+'<br/>';;
