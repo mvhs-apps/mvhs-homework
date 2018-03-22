@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+
+body {
+
+  font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+#calendar {
+
+  padding: 8px;
+
+  margin: 0 auto;
+
+  min-width: 300px;
+
+  width: fit-content;
+
+  max-width: 600px;
+
+  margin-top: 1em;
+
+}
+
+
+
+#avatar {
+
+margin-left: auto;
+
+}
+
+
+
+#title {
+
+    position: relative;
+
+}
+
+#button {
+
+    margin-left: auto;
+
+}
+
+h2 {
+
+    white-space: nowrap;
+
+  width: auto;
+
+}
+
+
+
+#title {
+
+  position: static;
+
+}
