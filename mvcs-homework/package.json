@@ -9,6 +9,8 @@
     "gatsby-link": "^1.6.20",
     "gatsby-plugin-react-helmet": "^1.0.6",
     "isomorphic-fetch": "^2.2.1",
+    "material-ui": "^1.0.0-beta.38",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^0.14.9",
     "react-google-login": "^2.11.2",
     "react-redirect": "^1.0.0",

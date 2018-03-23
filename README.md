@@ -8,3 +8,7 @@ Andrew Runke
 Akhand Dugar
 Alexander Vilablance 
 Christopher W. Harjadi
+
+Commands as request by Andrew:
+(sudo) npm install --save material-ui@next
+(sudo) npm install --save material-ui-icons
