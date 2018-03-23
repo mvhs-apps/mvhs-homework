@@ -59,7 +59,10 @@ class Homework {
         if(!isEmpty(json2)) {      
           var final = "";
           //console.log(json2.courseWork[0].title);
-          final += json2.courseWork[0].title;
+          for(var j = 0; j < 5; j++) {
+            final += json2.courseWork[j].title + "</br>";
+            //console.log(final);
+          }
           document.getElementById("class"+(i+1).toString()+"info").innerHTML = final; 
         }
       }
@@ -78,7 +81,7 @@ const LoginPage = () =>
             <Typography type="title" color='inherit'>
               MVHS Homework App
             </Typography>
-            <div id='avatar' color='inherit'><Avatar>A</Avatar></div>
+            <div id='avatar' color='inherit'><Avatar>{name[0]}</Avatar></div>
           </Toolbar>
         </AppBar>
         <Paper id='calendar'>
