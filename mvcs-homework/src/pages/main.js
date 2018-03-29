@@ -18,6 +18,7 @@ import Avatar from 'material-ui/Avatar';
 import DateRangeIcon from 'material-ui-icons/DateRange';
 import AssignmentIcon from 'material-ui-icons/Assignment';
 import NoteIcon from 'material-ui-icons/Note';
+import firebase from './firebase.js';
 
 const cookies = new Cookies();
 var name = (cookies.get('name'));
@@ -67,6 +68,54 @@ class Homework {
 }
 var app = new Homework();
 app.loadTest();
+
+class DatabaseFetch {
+
+  clicked() {
+    var database = [];
+    console.log("went in");
+    firebase.auth().signInAnonymously().catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+
+    const fdatabase = firebase.database().ref('ShoppingList')
+    //const database = firebase.database().ref('ShoppingList')
+
+    const tempdatabase = [];
+
+    fdatabase.on('value',snapshot => {
+      //Read each item in shoppings
+      //Store it in a temporary array
+      snapshot.forEach(childSnapShot => {
+        //childSnapShot.key is the name of the data
+        //childSnapShot.val() is the value of the data
+        tempdatabase.push(childSnapShot.val());
+      });    
+
+    database = tempdatabase;
+
+    });
+
+    fdatabase.set({
+      1: 'Eggs',
+      2:'Watermelon',
+      3: 'Potato chips'
+    })
+
+    console.log(database);
+
+    return database.map( (item) => <li>{item}</li> );
+  }
+}
+
+const sawClick = () => {
+  var databaseObj = new DatabaseFetch;
+  var map = databaseObj.clicked();
+  document.getElementById("firebase").innerHTML = map;
+}
+
 const LoginPage = () =>
 <MuiThemeProvider theme={theme}>
       <div>
@@ -78,6 +127,8 @@ const LoginPage = () =>
             <div id='avatar' color='inherit'><Avatar>{name[0]}</Avatar></div>
           </Toolbar>
         </AppBar>
+        <button onClick={sawClick()} value="See database assignments"/>
+        <div id="firebase"></div>
         <Paper id='calendar'>
           <Table>
             <TableHead>

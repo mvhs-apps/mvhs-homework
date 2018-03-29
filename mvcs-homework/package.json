@@ -5,6 +5,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "es6-promise": "^4.1.1",
+    "firebase": "^4.12.0",
     "gatsby": "^1.9.52",
     "gatsby-link": "^1.6.20",
     "gatsby-plugin-react-helmet": "^1.0.6",
