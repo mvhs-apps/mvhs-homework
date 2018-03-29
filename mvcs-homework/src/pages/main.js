@@ -25,6 +25,8 @@ var name = (cookies.get('name'));
 var key = (cookies.get('key'));
 console.log(key);
 
+var datamap;
+
 const theme = createMuiTheme ({
   palette: {
     primary: amber,
@@ -117,7 +119,8 @@ const sawClick = () => {
   var databaseObj = new DatabaseFetch;
   var map = databaseObj.clicked();
   console.log(map);
-  document.getElementById("firebase").innerHTML = map.map( (item) => <li>{item}</li> );
+  datamap = map.map( (item) => <li>{item}</li>);
+  //document.getElementById("firebase").innerHTML = map.map( (item) => <li>{item}</li> );
 }
 
 const LoginPage = () =>
@@ -132,8 +135,8 @@ const LoginPage = () =>
           </Toolbar>
         </AppBar>
 
-        <button onClick={sawClick()} value="See database assignments"/>
-        <div id="firebase"></div>
+        <button onClick={sawClick()} id="buttonhidden"/>
+        <div id="firebase">{datamap}</div>
 
         <Paper id='calendar'>
           <Table>

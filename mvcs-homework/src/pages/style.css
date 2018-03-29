@@ -8,6 +8,10 @@ body {
 
 }
 
+#buttonhidden {
+  visibility: hidden;
+}
+
 
 
 #calendar {
