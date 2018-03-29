@@ -44,6 +44,8 @@ class Homework {
       const json = await response.json();
       //coursemax vars will eventually be user defined
       var coursemax = [2, 2, 2, 2, 2, 2, 2, 2];
+
+      if(json.courses != null) {
       for(var course =0;course<json.courses.length&&course<9;course++ ){
         //grab course info
         var coursework = await fetch('https://classroom.googleapis.com/v1/courses/' +json.courses[course].id+'/courseWork?access_token='+key);
@@ -59,8 +61,9 @@ class Homework {
         }
         //making ids to render
         document.getElementById('class'+(course+1)+'info').innerHTML = assignment;
-        document.getElementById('class'+(course+1)).innerHTML = json.courses[course].name+'</b>'+':'+'<br/>';;
+        document.getElementById('class'+(course+1)).innerHTML = json.courses[course].name+'</b>'+':'+'<br/>';
       }
+      } 
     } catch(err) {
       console.log(err);
     }
@@ -106,14 +109,15 @@ class DatabaseFetch {
 
     console.log(database);
 
-    return database.map( (item) => <li>{item}</li> );
+    return database;//.map( (item) => <li>{item}</li> )
   }
 }
 
 const sawClick = () => {
   var databaseObj = new DatabaseFetch;
   var map = databaseObj.clicked();
-  document.getElementById("firebase").innerHTML = map;
+  console.log(map);
+  document.getElementById("firebase").innerHTML = map.map( (item) => <li>{item}</li> );
 }
 
 const LoginPage = () =>
@@ -127,8 +131,10 @@ const LoginPage = () =>
             <div id='avatar' color='inherit'><Avatar>{name[0]}</Avatar></div>
           </Toolbar>
         </AppBar>
+
         <button onClick={sawClick()} value="See database assignments"/>
         <div id="firebase"></div>
+
         <Paper id='calendar'>
           <Table>
             <TableHead>
