@@ -48,36 +48,39 @@ class Homework {
       var coursemax = [2, 2, 2, 2, 2, 2, 2, 2];
 
       if(json.courses != null) {
-      for(var course =0;course<json.courses.length&&course<9;course++ ){
-        var database = [];
-        console.log("went in");
-        firebase.auth().signInAnonymously().catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-        });
+        for(var course =0;course<json.courses.length&&course<9;course++ ){
+          var database = [];
+          console.log("went in");
+          firebase.auth().signInAnonymously().catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+          });
 
-        const fdatabase = firebase.database().ref(name)
-        //const database = firebase.database().ref('ShoppingList')
+          const fdatabase = firebase.database().ref(name)
+          //const database = firebase.database().ref('ShoppingList')
 
-        //grab course info
-        var coursework = await fetch('https://classroom.googleapis.com/v1/courses/' +json.courses[course].id+'/courseWork?access_token='+key);
-        var coursejson = await coursework.json();
-        fdatabase.set({coursejson});
-        console.log(coursejson);
-        var assignment ="";
-        for(var assignmentnum in coursejson.courseWork){
-          if (assignmentnum<=coursemax[course]-1){
-            //add in assignment
-            assignment += "<p>" +coursejson.courseWork[assignmentnum].title+"</p>";
-            fdatabase.set({coursejson});
-            //"Due: "+coursejson.courseWork[assignmentnum].dueDate.month+"/"+coursejson.courseWork[assignmentnum].dueDate.day
+          //grab course info
+          var coursework = await fetch('https://classroom.googleapis.com/v1/courses/' +json.courses[course].id+'/courseWork?access_token='+key);
+          var coursejson = await coursework.json();
+          fdatabase.set({coursejson});
+          console.log("Grabbed Course Json");
+          //console.log(coursejson);
+          var assignment ="";
+          for(var assignmentnum in coursejson.courseWork){
+            if (assignmentnum<=coursemax[course]-1){
+              //add to assignment
+              assignment += "<p>" +coursejson.courseWork[assignmentnum].title+"</p>";
+              fdatabase.set({coursejson});
+              //"Due: "+coursejson.courseWork[assignmentnum].dueDate.month+"/"+coursejson.courseWork[assignmentnum].dueDate.day
+            }
           }
+          //making ids to render
+          document.getElementById('class'+(course+1)+'info').innerHTML = assignment;
+          console.log("Made ID for course "+course+1);
+          document.getElementById('class'+(course+1)).innerHTML = json.courses[course].name+'</b>'+':'+'<br/>');
+          console.log("Made ID for course assinments for course "+cousrse+1);
         }
-        //making ids to render
-        document.getElementById('class'+(course+1)+'info').innerHTML = assignment;
-        document.getElementById('class'+(course+1)).innerHTML = json.courses[course].name+'</b>'+':'+'<br/>';
-      }
       } 
     } catch(err) {
       console.log(err);
