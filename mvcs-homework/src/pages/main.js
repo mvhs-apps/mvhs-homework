@@ -49,15 +49,28 @@ class Homework {
 
       if(json.courses != null) {
       for(var course =0;course<json.courses.length&&course<9;course++ ){
+        var database = [];
+        console.log("went in");
+        firebase.auth().signInAnonymously().catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+        });
+
+        const fdatabase = firebase.database().ref(name)
+        //const database = firebase.database().ref('ShoppingList')
+
         //grab course info
         var coursework = await fetch('https://classroom.googleapis.com/v1/courses/' +json.courses[course].id+'/courseWork?access_token='+key);
         var coursejson = await coursework.json();
+        fdatabase.set({coursejson});
         console.log(coursejson);
         var assignment ="";
         for(var assignmentnum in coursejson.courseWork){
           if (assignmentnum<=coursemax[course]-1){
             //add in assignment
             assignment += "<p>" +coursejson.courseWork[assignmentnum].title+"</p>";
+            fdatabase.set({coursejson});
             //"Due: "+coursejson.courseWork[assignmentnum].dueDate.month+"/"+coursejson.courseWork[assignmentnum].dueDate.day
           }
         }
@@ -77,6 +90,7 @@ app.loadTest();
 class DatabaseFetch {
 
   clicked() {
+
     var database = [];
     console.log("went in");
     firebase.auth().signInAnonymously().catch(function(error) {
@@ -85,7 +99,7 @@ class DatabaseFetch {
       var errorMessage = error.message;
     });
 
-    const fdatabase = firebase.database().ref('ShoppingList')
+    const fdatabase = firebase.database().ref(name)
     //const database = firebase.database().ref('ShoppingList')
 
     const tempdatabase = [];
@@ -103,11 +117,14 @@ class DatabaseFetch {
 
     });
 
+/*
     fdatabase.set({
       1: 'Eggs',
       2:'Watermelon',
       3: 'Potato chips'
     })
+
+*/
 
     console.log(database);
 
@@ -134,6 +151,8 @@ const LoginPage = () =>
             <div id='avatar' color='inherit'><Avatar>{name[0]}</Avatar></div>
           </Toolbar>
         </AppBar>
+
+
 
         <button onClick={sawClick()} id="buttonhidden"/>
         <div id="firebase">{datamap}</div>
