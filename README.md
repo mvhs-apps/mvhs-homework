@@ -16,9 +16,10 @@ Christopher W. Harjadi
 
 Commands to install nessesary programs:
 
-(sudo) npm install gatsby
+sudo npm install gatsby
 
-(sudo) npm install --save material-ui@next
+sudo npm install --save material-ui@next
 
-(sudo) npm install --save material-ui-icons
+sudo npm install --save material-ui-icons
 
+sudo npm install --save firebase
