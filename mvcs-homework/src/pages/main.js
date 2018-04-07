@@ -23,7 +23,7 @@ import firebase from './firebase.js';
 const cookies = new Cookies();
 var name = (cookies.get('name'));
 var key = (cookies.get('key'));
-console.log(key);
+//console.log(key);
 
 var datamap;
 
@@ -78,8 +78,8 @@ class Homework {
           //making ids to render
           document.getElementById('class'+(course+1)+'info').innerHTML = assignment;
           console.log("Made ID for course "+course+1);
-          document.getElementById('class'+(course+1)).innerHTML = json.courses[course].name+'</b>'+':'+'<br/>');
-          console.log("Made ID for course assinments for course "+cousrse+1);
+          document.getElementById('class'+(course+1)).innerHTML = json.courses[course].name+'</b>'+':'+'<br/>';
+          console.log("Made ID for course assinments for course "+course+1);
         }
       } 
     } catch(err) {
@@ -129,7 +129,7 @@ class DatabaseFetch {
 
 */
 
-    console.log(database);
+    //console.log(database);
 
     return database;//.map( (item) => <li>{item}</li> )
   }
@@ -138,63 +138,65 @@ class DatabaseFetch {
 const sawClick = () => {
   var databaseObj = new DatabaseFetch;
   var map = databaseObj.clicked();
-  console.log(map);
+  //console.log(map);
   datamap = map.map( (item) => <li>{item}</li>);
   //document.getElementById("firebase").innerHTML = map.map( (item) => <li>{item}</li> );
 }
+export default class returner extends Component {
+  render(){
+    return(
+    <MuiThemeProvider theme={theme}>
+          <div>
+            <AppBar position="static" id='title'>
+              <Toolbar>
+                <Typography type="title" color='inherit'>
+                  MVHS Homework App
+                </Typography>
+                <div id='avatar' color='inherit'><Avatar>{name[0]}</Avatar></div>
+              </Toolbar>
+            </AppBar>
 
-const LoginPage = () =>
-<MuiThemeProvider theme={theme}>
-      <div>
-        <AppBar position="static" id='title'>
-          <Toolbar>
-            <Typography type="title" color='inherit'>
-              MVHS Homework App
-            </Typography>
-            <div id='avatar' color='inherit'><Avatar>{name[0]}</Avatar></div>
-          </Toolbar>
-        </AppBar>
 
 
+            <button onClick={sawClick()} id="buttonhidden"/>
+            <div id="firebase">{datamap}</div>
 
-        <button onClick={sawClick()} id="buttonhidden"/>
-        <div id="firebase">{datamap}</div>
-
-        <Paper id='calendar'>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell><p id = "class1"></p></TableCell>
-                <TableCell><p id = "class1info"></p></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><p id = "class2"></p></TableCell>
-                <TableCell><p id = "class2info"></p></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><p id = "class3"></p></TableCell>
-                <TableCell><p id = "class3info"></p></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><p id = "class4"></p></TableCell>
-                <TableCell><p id = "class4info"></p></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><p id = "class5"></p></TableCell>
-                <TableCell><p id = "class5info"></p></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><p id = "class6"></p></TableCell>
-                <TableCell><p id = "class6info"></p></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><p id = "class7"></p></TableCell>
-                <TableCell><p id = "class7info"></p></TableCell>
-              </TableRow>
-            </TableHead>
-          </Table>
-        </Paper>
-      </div>
-    </MuiThemeProvider>
-  
-export default LoginPage
+            <Paper id='calendar'>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell><p id = "class1"></p></TableCell>
+                    <TableCell><p id = "class1info"></p></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><p id = "class2"></p></TableCell>
+                    <TableCell><p id = "class2info"></p></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><p id = "class3"></p></TableCell>
+                    <TableCell><p id = "class3info"></p></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><p id = "class4"></p></TableCell>
+                    <TableCell><p id = "class4info"></p></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><p id = "class5"></p></TableCell>
+                    <TableCell><p id = "class5info"></p></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><p id = "class6"></p></TableCell>
+                    <TableCell><p id = "class6info"></p></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><p id = "class7"></p></TableCell>
+                    <TableCell><p id = "class7info"></p></TableCell>
+                  </TableRow>
+                </TableHead>
+              </Table>
+            </Paper>
+          </div>
+        </MuiThemeProvider>)
+    
+    }
+}
