@@ -12,6 +12,8 @@ Akhand Dugar
 
 Alexander Vilablance 
 
+Ron Arel
+
 Christopher W. Harjadi
 
 Commands to install nessesary programs:
