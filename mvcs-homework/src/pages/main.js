@@ -18,12 +18,21 @@ import Avatar from 'material-ui/Avatar';
 import DateRangeIcon from 'material-ui-icons/DateRange';
 import AssignmentIcon from 'material-ui-icons/Assignment';
 import NoteIcon from 'material-ui-icons/Note';
+import firebase from 'firebase'
 
 const cookies = new Cookies();
 var name = (cookies.get('name'));
 var key = (cookies.get('key'));
 console.log(key);
-
+ var config = {
+    apiKey: "AIzaSyCanm_X6eh2YOvmpOJEMJvi2_2rIv7w2UU",
+    authDomain: "test-9f630.firebaseapp.com",
+    databaseURL: "https://test-9f630.firebaseio.com",
+    projectId: "test-9f630",
+    storageBucket: "test-9f630.appspot.com",
+    messagingSenderId: "673468303307"
+  };
+  firebase.initializeApp(config);
 const theme = createMuiTheme ({
   palette: {
     primary: amber,
