@@ -14,6 +14,8 @@ Alexander Vilablance
 
 Christopher W. Harjadi
 
+Ron Arel
+
 Commands to install nessesary programs:
 
 sudo npm install gatsby
