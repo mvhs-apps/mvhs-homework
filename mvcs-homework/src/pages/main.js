@@ -110,7 +110,7 @@ app.loadTest();
     title: this.state.topicBox,
     user: this.state.payloadBox
   }
-  itemsRef.push(item);
+  itemsRef.push(item).set("name");
   this.setState({
     topicBox: '',
     payloadBox: ''
