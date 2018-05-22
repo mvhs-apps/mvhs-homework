@@ -69,9 +69,9 @@ const IndexPage = () =>
 
                 <GoogleLogin
 
-                  clientId="903272031716-1g68c9r70uh1abn89gpl46ifdk0p0o4o.apps.googleusercontent.com"
+             clientId="9612881117734-6mc2m5t76cv10nrmpfjcc7pit28mk7tk.apps.googleusercontent.com"
 //290518323911-f5ph5ghp1qr230r90f79p7sg2n5o0vn9.apps.googleusercontent.com
-
+              
                   scope="https://www.googleapis.com/auth/classroom.courses https://www.googleapis.com/auth/classroom.coursework.me"
 
                   response_type="token"
