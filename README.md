@@ -6,13 +6,13 @@ Made by:
 
 John H. Park
 
-Andrew Runke
-
 Akhand Dugar
 
-Alexander Vilablance 
+Ron Arel
 
-Christopher W. Harjadi
+Alexander Villablanca 
+
+Andrew Runke
 
 Commands to install nessesary programs:
 
@@ -21,4 +21,3 @@ sudo npm install gatsby
 sudo npm install --save material-ui@next
 
 sudo npm install --save material-ui-icons
-
