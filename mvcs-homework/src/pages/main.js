@@ -14,16 +14,20 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
+//import SingleInput from 'material-ui/components/SingleInput';  
+
 import Avatar from 'material-ui/Avatar';
 import DateRangeIcon from 'material-ui-icons/DateRange';
 import AssignmentIcon from 'material-ui-icons/Assignment';
 import NoteIcon from 'material-ui-icons/Note';
+//import 'react-fab/dist/main.scss';
+import * as firebase from 'firebase'
 
 const cookies = new Cookies();
 var name = (cookies.get('name'));
 var key = (cookies.get('key'));
 console.log(key);
-
 const theme = createMuiTheme ({
   palette: {
     primary: amber,
@@ -32,10 +36,44 @@ const theme = createMuiTheme ({
   root: {
   flexGrow: 1,
   },
+  bottomView:{
 
+      width: '25%', 
+      height: 50, 
+      backgroundColor: '#FF9800', 
+      justifyContent: 'center', 
+      alignItems: 'center',
+      position: 'absolute',
+      right: 0
+    },
 });
+class Base {
+  constructor() {
+  }
+}
 
-class Homework {
+class Homework extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      topicBox: null,
+      payloadBox: null
+    };
+
+    this.publish = this.publish.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+ publish(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value});  // this will set your state of current input, that you were handling
+    //this.setState({value: event.target.value});
+  }
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value}) 
+    //this.setState({value: event.target.value});
+  }
   async loadTest() {
     try {
       //grab courses
@@ -69,7 +107,32 @@ class Homework {
   }
 }
 var app = new Homework();
+  var config = {
+    apiKey: "AIzaSyCanm_X6eh2YOvmpOJEMJvi2_2rIv7w2UU",
+    authDomain: "test-9f630.firebaseapp.com",
+    databaseURL: "https://test-9f630.firebaseio.com",
+    projectId: "test-9f630",
+    storageBucket: "test-9f630.appspot.com",
+    messagingSenderId: "673468303307"
+  };
+  firebase.initializeApp(config);
 app.loadTest();
+
+  function publish() {
+    console.log( this.state.topicBox, this.state.payloadBox );
+  const itemsRef = firebase.database().ref('Users');
+  const item = {
+    title: this.state.topicBox,
+    user: this.state.payloadBox
+  }
+  itemsRef.push(item).set("name");
+  this.setState({
+    topicBox: '',
+    payloadBox: ''
+  });
+
+  }
+
 const LoginPage = () =>
 <MuiThemeProvider theme={theme}>
       <div>
@@ -115,7 +178,30 @@ const LoginPage = () =>
             </TableHead>
           </Table>
         </Paper>
+      <form>
+
+      <input 
+        type="text" 
+        name="topicBox" 
+        placeholder="Name" 
+        value={ app.state.topicBox }
+        onChange={ app.handleChange } 
+      />
+      <input 
+        type="text" 
+        name="payloadBox" 
+        placeholder="Details"
+        value={ app.state.payloadBox } 
+        onChange={ app.handleChange } 
+      />
+      </form>
+      <Button variant="raised" color="secondary" style = {theme.bottomView} onClick={ app.publish }>
+        Add
+      </Button>
       </div>
+     
     </MuiThemeProvider>
+
+  
   
 export default LoginPage
